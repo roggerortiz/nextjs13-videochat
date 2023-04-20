@@ -1,0 +1,27 @@
+.sidebar-active {
+  .chitchat-container .chitchat-main {
+    width: calc(100% - 890px);
+    transition: all 0.7s;
+
+    &.small-sidebar {
+      width: calc(100% - 400px);
+
+      .message-input {
+        width: calc(100% - 400px);
+      }
+
+      .messages {
+        .contact-details {
+          width: calc(100vw - 497px);
+        }
+      }
+    }
+  }
+}
+
+.profile.online {
+  &:before {
+    top: 1px;
+    right: 1px;
+  }
+}

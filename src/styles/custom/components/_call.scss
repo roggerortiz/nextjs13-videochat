@@ -1,0 +1,142 @@
+#videoCallModal {
+  .modal-content {
+    background-color: #000;
+  }
+}
+
+.videocall {
+  &.call-modal {
+    .local-videocall {
+      width: 100%;
+      height: calc(90vh - 66px) !important;
+      position: absolute;
+      top: 66px;
+    }
+
+    .media {
+      &.videocall-details {
+        height: 66px;
+        background-color: rgba(255, 255, 255, 0.8) !important;
+
+        .usersprof {
+          .profile {
+            width: 45px !important;
+            height: 45px !important;
+          }
+        }
+
+        .media-body {
+          h3 {
+            color: #000;
+          }
+        }
+      }
+    }
+
+    .center-con {
+      z-index: 10;
+      bottom: 40px;
+
+      .icon-btn {
+        border: 1px solid rgba(0, 0, 0, 0.175);
+      }
+    }
+  }
+}
+
+.videocall {
+  &.call-modal {
+    .videocall-details {
+      #basicUsage {
+        width: 70px;
+        font-size: 14px;
+      }
+
+      .zoomcontent {
+        width: 30px !important;
+        height: 30px !important;
+        border: 1px solid rgba(0, 0, 0, 0.175);
+
+        a {
+          svg {
+            width: 15px !important;
+            height: 15px !important;
+          }
+        }
+
+        .dropdown {
+          a {
+            svg {
+              width: 15px !important;
+              height: 15px !important;
+            }
+          }
+
+          .dropdown-menu {
+            background-color: #fff;
+            border-radius: 0.375rem;
+            border: 1px solid rgba(0, 0, 0, 0.175);
+
+            .dropdown-item {
+              display: flex !important;
+              align-items: center !important;
+              gap: 0.5rem !important;
+              font-size: 0.8rem !important;
+              padding: 0.25rem 0.75rem !important;
+
+              svg {
+                width: 15px !important;
+                height: 15px !important;
+                margin-bottom: 0.15rem !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.viddiolog {
+  &.active {
+    &.modal-dialog {
+      margin: 0;
+      width: 100vw;
+      max-width: unset;
+
+      .modal-content {
+        border: none;
+        border-radius: 0;
+        height: 100vh;
+
+        .videocall {
+          &.call-modal {
+            min-height: 100vh !important;
+
+            .local-videocall {
+              height: 100vh !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.videocall.call-modal .videocall-details .zoomcontent {
+  width: 38px px;
+  height: 38px;
+}
+
+@media (max-width: 767.98px) {
+  .videocall {
+    &.call-modal {
+      .local-videocall {
+        height: calc(90vh - 51px) !important;
+        position: absolute;
+        top: 51px;
+      }
+    }
+  }
+}

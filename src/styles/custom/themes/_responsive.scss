@@ -1,0 +1,174 @@
+@media (max-width: 1366px) {
+  .chitchat-main {
+    .message-input {
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .sidebar-active {
+    .chitchat-container {
+      .chitchat-main.small-sidebar {
+        .messages {
+          .contact-details {
+            width: calc(100vw - 385px);
+          }
+        }
+      }
+    }
+
+    .chitchat-container {
+      .chitchat-main {
+        &.small-sidebar {
+          width: calc(100% - 300px);
+        }
+      }
+    }
+  }
+
+  .sidebar-active {
+    .chitchat-container {
+      .chitchat-main {
+        &.small-sidebar {
+          .message-input {
+            width: calc(100% - 300px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar-active {
+    .chitchat-container {
+      .chitchat-main {
+        &.small-sidebar {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .sidebar-active {
+    .chitchat-container {
+      .chitchat-main.small-sidebar {
+        .messages {
+          .contact-details {
+            width: calc(100vw - 56px);
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-active {
+    .chitchat-container {
+      .chitchat-main {
+        &.small-sidebar {
+          .message-input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .chitchat-loader img {
+    height: auto;
+  }
+
+  .modal-dialog-centered {
+    .modal-content {
+      max-height: 92vh;
+    }
+  }
+
+  .viddiolog {
+    &.active {
+      &.modal-dialog {
+        .modal-content {
+          max-height: 100vh;
+
+          .videocall {
+            &.call-modal {
+              .local-videocall {
+                height: calc(100vh - 51px) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .videocall {
+    &.call-modal {
+      .media {
+        &.videocall-details {
+          height: 51px;
+
+          .usersprof {
+            .profile {
+              width: 35px !important;
+              height: 35px !important;
+            }
+          }
+
+          .media-body {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .zoomcontent {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-active {
+    .chitchat-container {
+      .chitchat-main.small-sidebar {
+        .messages {
+          .contact-details {
+            width: calc(100vw - 35px);
+          }
+        }
+      }
+    }
+  }
+
+  .contact-details {
+    >.row {
+      .icon-btn {
+        background-color: #eff1f2;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .videocall {
+    &.call-modal {
+      .videocall-details {
+        #basicUsage {
+          display: block;
+          width: 55px;
+          font-size: 12px;
+        }
+
+        .zoomcontent {
+          display: block;
+        }
+      }
+    }
+  }
+}
