@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 const ChatMessageSent = ({ user, message }) => {
   if (!user) {
@@ -8,7 +8,7 @@ const ChatMessageSent = ({ user, message }) => {
   return (
     <li className='sent'>
       <div className='media'>
-        <div className="profile bg-info rounded mr-4">
+        <div className='profile bg-info rounded mr-4'>
           <span>
             {user.initials}
           </span>
@@ -16,7 +16,7 @@ const ChatMessageSent = ({ user, message }) => {
 
         <div className='media-body'>
           <div className='contact-name'>
-            <h5>{user.shortName}</h5>
+            <h5>{user.name}</h5>
             <h6>{message.time}</h6>
             <ul className='msg-box'>
               <li className='msg-setting-main'>
@@ -38,7 +38,7 @@ const ChatMessageSent = ({ user, message }) => {
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default ChatMessageSent;
+export default ChatMessageSent

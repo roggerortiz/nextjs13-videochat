@@ -1,7 +1,7 @@
-import { useVideoCall } from '@/helpers/context/videoCallContext';
+import { useVideoCall } from '@/helpers/context/videoCallContext'
 
 const VideoCallTimeValues = () => {
-  const { timeValues } = useVideoCall();
+  const { timeValues } = useVideoCall()
 
   return (
     <div
@@ -10,7 +10,7 @@ const VideoCallTimeValues = () => {
     >
       {timeValues}
     </div>
-  );
-};
+  )
+}
 
-export default VideoCallTimeValues;
+export default VideoCallTimeValues

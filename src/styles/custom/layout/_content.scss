@@ -1,4 +1,18 @@
 .chitchat-main {
+  .messages {
+    .contact-details {
+      .left {
+        &.media {
+          .media-body {
+            &:before {
+              top: 9px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .message-input {
     input {
       width: 100%;

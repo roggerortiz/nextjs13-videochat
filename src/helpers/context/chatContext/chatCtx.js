@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
-import { getUid, scrollToBottom } from '@/helpers/utils';
-import { ChatStatus } from '@/helpers/enums/chatStatus';
-import { agoraChat } from '@/helpers/agora/chat';
-import ChatContext from ".";
-import axios from 'axios';
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
+import { getUid, scrollToBottom } from '@/helpers/utils'
+import { ChatStatus } from '@/helpers/enums/chatStatus'
+import { agoraChat } from '@/helpers/agora/chat'
+import ChatContext from '.'
+import axios from 'axios'
 
 const ChatProvider = (props) => {
   const router = useRouter()
@@ -14,31 +14,23 @@ const ChatProvider = (props) => {
   const [emojis, setEmojis] = useState([])
   const [stickers, setStickers] = useState([])
   const [loading, setLoading] = useState(false)
-  const [messages, setMessages] = useState([
-    { id: getUid(), sender: 'Sender', time: '01:27 AM', text: 'Hi I am Alan,', stickers: '', status: true },
-    { id: getUid(), sender: 'Sender', time: '01:27 AM', text: 'your personal assistant to help you &#128512;', stickers: '', status: false },
-    { id: getUid(), sender: 'Receiver', time: '01:35 AM', text: 'Hi I am Josephin, can you help me to find best chat app?.', stickers: '', status: true },
-    { id: getUid(), sender: 'Receiver', time: '01:35 AM', text: 'it should from elite auther &#128519;', stickers: '', status: true },
-    { id: getUid(), sender: 'Sender', time: '01:40 AM', text: 'Sure, chitchat is best theme for chating project, you can it check', stickers: '', status: true },
-    { id: getUid(), sender: 'Receiver', time: '01:42 AM', text: 'I think it&apos;s best for my project.', stickers: '', status: true },
-  ]);
-  const [isTyping, setIsTyping] = useState(false);
-  const [connected, setConnected] = useState(false);
-  const [messageInput, setMessageInput] = useState('');
-  const [chatConnection] = useState(agoraChat.getConnection(connected));
+  const [messages, setMessages] = useState([])
+  const [isTyping, setIsTyping] = useState(false)
+  const [connected, setConnected] = useState(false)
+  const [messageInput, setMessageInput] = useState('')
+  const [lastMessage, setLastMessage] = useState(null)
+  const [chatConnection] = useState(agoraChat.getConnection(connected))
 
   const signIn = async (username, password) => {
     setLoading(true)
 
-    const loginResult = await agoraChat.openConnection(chatConnection, username, password);
+    const loginResult = await agoraChat.openConnection(chatConnection, username, password, onConnected, onTextMessage)
 
     if (!loginResult) {
       toast.error('Please enter correct username or password')
       setLoading(false)
       return
     }
-
-    agoraChat.setEvents(chatConnection, { onConnected, onTextMessage })
 
     const user = {
       message: 'Last message',
@@ -60,8 +52,7 @@ const ChatProvider = (props) => {
       contact.id = 'Receiver'
       contact.name = 'Receiver'
       contact.initials = 'R'
-    }
-    else {
+    } else {
       user.id = 'Receiver'
       user.name = 'Receiver'
       user.initials = 'R'
@@ -79,84 +70,98 @@ const ChatProvider = (props) => {
   }
 
   const signOut = () => {
-    agoraChat.closeConnection(chatConnection)
     setUser(null)
     setContact(null)
+
+    agoraChat.closeConnection(chatConnection)
+
     router.replace('/auth/signIn')
   }
 
   const showSidebar = (response) => {
     if (response) {
-      document.querySelector('.sidebar-toggle').classList.add('mobile-menu');
+      document.querySelector('.sidebar-toggle').classList.add('mobile-menu')
     } else {
-      document.querySelector('.sidebar-toggle').classList.remove('mobile-menu');
+      document.querySelector('.sidebar-toggle').classList.remove('mobile-menu')
     }
-  };
+  }
 
   const sendMessage = async (messageInput, image) => {
-    const id = getUid();
-    const now = new Date();
-    const time = now.getHours() + ':' + now.getMinutes();
+    const status = await agoraChat.sendMessage(chatConnection, contact.id, messageInput, image)
 
-    const status = await agoraChat.sendMessage(chatConnection, contact.id, messageInput, image);
+    const id = getUid()
+    const now = new Date()
+    const time = now.getHours() + ':' + now.getMinutes()
     const message = {
       id,
       status,
-      time: time,
+      time,
       sender: user.id,
       text: messageInput,
-      stickers: image,
-    };
+      stickers: image
+    }
 
-    setMessages([...messages, message]);
+    setLastMessage(status ? null : message)
+    setMessages((prevState) => [...prevState, message])
+  }
+
+  const resendMessage = async (lastMessage) => {
+    const status = await agoraChat.sendMessage(chatConnection, contact.id, lastMessage.text, lastMessage.stickers)
+
+    setLastMessage(status ? null : lastMessage)
+    setMessages((prevState) => [...prevState].map((message) => {
+      return (message.id === lastMessage.id) ? { ...message, status } : message
+    }))
   }
 
   const onConnected = () => {
     setLoading(false)
     setConnected(true)
-    scrollToBottom('.messages');
+    scrollToBottom('.messages')
   }
 
-  const onTextMessage = (messageInput, image) => {
-    const id = getUid();
-    const now = new Date();
-    const time = now.getHours() + ':' + now.getMinutes();
+  const onTextMessage = async (messageInput, image) => {
+    const id = getUid()
+    const now = new Date()
+    const time = now.getHours() + ':' + now.getMinutes()
 
     const message = {
       id,
-      time: time,
-      sender: contact.Id,
+      time,
+      sender: contact?.id ?? '',
       text: messageInput,
       stickers: image,
-      status: true,
-    };
-
-    setMessages([...messages, message]);
-  };
-
-  useEffect(() => {
-    if (!user) {
-      router.push('/auth/signIn')
+      status: true
     }
 
+    setMessages((prevState) => [...prevState, message])
+  }
+
+  useEffect(() => {
     return () => agoraChat.closeConnection(chatConnection)
   }, [])
 
   useEffect(() => {
     if (user) {
-      axios.get("/api/emoji.json").then(({ data }) => setEmojis(data ?? []));
-      axios.get("/api/sticker.json").then(({ data }) => setStickers(data ?? []));
+      axios.get('/api/emoji.json').then(({ data }) => setEmojis(data ?? []))
+      axios.get('/api/sticker.json').then(({ data }) => setStickers(data ?? []))
+
+      setMessages([
+        { id: getUid(), sender: 'Sender', time: '01:27 AM', text: 'Hi I am Alan,', stickers: '', status: true },
+        { id: getUid(), sender: 'Sender', time: '01:27 AM', text: 'your personal assistant to help you &#128512;', stickers: '', status: false },
+        { id: getUid(), sender: 'Receiver', time: '01:35 AM', text: 'Hi I am Josephin, can you help me to find best chat app?.', stickers: '', status: true },
+        { id: getUid(), sender: 'Receiver', time: '01:35 AM', text: 'it should from elite auther &#128519;', stickers: '', status: true },
+        { id: getUid(), sender: 'Sender', time: '01:40 AM', text: 'Sure, chitchat is best theme for chating project, you can it check', stickers: '', status: true },
+        { id: getUid(), sender: 'Receiver', time: '01:42 AM', text: 'I think it&apos;s best for my project.', stickers: '', status: true }
+      ])
     }
   }, [user])
 
   useEffect(() => {
-    if (user) {
-      scrollToBottom('.messages');
+    if (messages.length) {
+      scrollToBottom('.messages')
     }
-  }, [
-    user,
-    messages
-  ])
+  }, [messages])
 
   return (
     <ChatContext.Provider
@@ -169,18 +174,21 @@ const ChatProvider = (props) => {
         messages,
         isTyping,
         messageInput,
+        lastMessage,
         signIn,
         signOut,
-        setLoading,
         showSidebar,
+        sendMessage,
+        resendMessage,
+        setLoading,
         setIsTyping,
         setMessageInput,
-        sendMessage
+        setLastMessage
       }}
     >
       {props.children}
     </ChatContext.Provider>
-  );
-};
+  )
+}
 
-export default ChatProvider;
+export default ChatProvider

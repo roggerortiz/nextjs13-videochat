@@ -1,13 +1,13 @@
-import { useChat } from '@/helpers/context/chatContext';
+import { useChat } from '@/helpers/context/chatContext'
 
 const VideoCallUserInfo = () => {
-  const { user, contact } = useChat();
+  const { user, contact } = useChat()
 
   return (
     <>
       <div className='usersprof'>
         {user && (
-          <div className="profile bg-info border rounded online">
+          <div className='profile bg-info border rounded online'>
             <span>
               {user.initials}
             </span>
@@ -15,7 +15,7 @@ const VideoCallUserInfo = () => {
         )}
 
         {contact && (
-          <div className="profile bg-info border rounded online">
+          <div className='profile bg-info border rounded online'>
             <span>
               {contact.initials}
             </span>
@@ -27,7 +27,7 @@ const VideoCallUserInfo = () => {
         <h3>{contact?.shortName}</h3>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default VideoCallUserInfo;
+export default VideoCallUserInfo

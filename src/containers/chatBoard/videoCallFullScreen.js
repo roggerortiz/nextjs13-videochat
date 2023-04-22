@@ -1,13 +1,13 @@
-import { toggleFullScreen } from '@/helpers/utils';
-import { useVideoCall } from '@/helpers/context/videoCallContext';
-import { Maximize, Minimize } from 'react-feather';
+import { toggleFullScreen } from '@/helpers/utils'
+import { useVideoCall } from '@/helpers/context/videoCallContext'
+import { Maximize, Minimize } from 'react-feather'
 
 const VideoCallFullScreen = () => {
-  const { videoFullScreen } = useVideoCall();
+  const { videoFullScreen } = useVideoCall()
 
   const handleToggleVideoScreen = (e) => {
-    e.preventDefault();
-    toggleFullScreen('#videoCallModal');
+    e.preventDefault()
+    toggleFullScreen('#videoCallModal')
   }
 
   return (
@@ -20,7 +20,7 @@ const VideoCallFullScreen = () => {
         {videoFullScreen ? <Minimize /> : <Maximize />}
       </a>
     </div>
-  );
-};
+  )
+}
 
-export default VideoCallFullScreen;
+export default VideoCallFullScreen

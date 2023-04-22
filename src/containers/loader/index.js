@@ -1,20 +1,20 @@
-import { useChat } from "@/helpers/context/chatContext";
+import { useChat } from '@/helpers/context/chatContext'
 
 const Loader = ({ title = 'Loading...' }) => {
-  const { loading } = useChat();
+  const { loading } = useChat()
 
   if (!loading) {
     return ''
   }
 
   return (
-    <div className="block-ui">
-      <div className="block-ui-overlay" />
-      <div className="block-ui-message-container">
-        <div className="block-ui-message">
-          <div className="block-ui-loader">
+    <div className='block-ui'>
+      <div className='block-ui-overlay' />
+      <div className='block-ui-message-container'>
+        <div className='block-ui-message'>
+          <div className='block-ui-loader'>
             <span>
-              <i className="fa fa-circle-notch fa-spin me-2"></i>
+              <i className='fa fa-circle-notch fa-spin me-2' />
               {title}
             </span>
           </div>
@@ -24,4 +24,4 @@ const Loader = ({ title = 'Loading...' }) => {
   )
 }
 
-export default Loader;
+export default Loader

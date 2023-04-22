@@ -1,15 +1,15 @@
-import Image from "next/image";
-import { useEffect } from "react";
-import { useChat } from "@/helpers/context/chatContext";
+import Image from 'next/image'
+import { useEffect } from 'react'
+import { useChat } from '@/helpers/context/chatContext'
 
 const ChatMessageTyping = ({ user }) => {
-  const { isTyping, setIsTyping } = useChat();
+  const { isTyping, setIsTyping } = useChat()
 
   useEffect(() => {
     setTimeout(() => {
-      setIsTyping(false);
-    }, 3000);
-  }, [isTyping]);
+      setIsTyping(false)
+    }, 3000)
+  }, [isTyping])
 
   if (!user || !isTyping) {
     return ''
@@ -22,19 +22,19 @@ const ChatMessageTyping = ({ user }) => {
           <Image
             className='bg-img'
             src='/images/contact/1.jpg'
-            alt={`Avatar - ${user.shortName}`}
+            alt={`Avatar - ${user.name}`}
             height={50}
             width={50}
           />
         </div>
         <div className='media-body'>
           <div className='contact-name'>
-            <h5>{user.shortName}</h5>
+            <h5>{user.name}</h5>
             <ul className='msg-box'>
               <li>
                 <h5>
                   <span className='d-block type'>
-                    <span className='d-block typing-loader'></span>
+                    <span className='d-block typing-loader' />
                   </span>
                 </h5>
               </li>
@@ -43,7 +43,7 @@ const ChatMessageTyping = ({ user }) => {
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default ChatMessageTyping;
+export default ChatMessageTyping

@@ -1,4 +1,4 @@
 export const ApiFileFrom = {
   JSON: 'json',
-  BLOB: 'blob',
+  BLOB: 'blob'
 }

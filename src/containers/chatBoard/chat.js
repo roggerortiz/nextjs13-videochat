@@ -1,7 +1,6 @@
-import MessageInput from './messageInput';
-import ChatMessages from './chatMessages';
-import ChatContact from './chatContact';
-import ChatOptions from './chatOptions';
+import MessageInput from './messageInput'
+import ChatMessages from './chatMessages'
+import ChatContact from './chatContact'
 
 const Chat = () => {
   return (
@@ -9,20 +8,16 @@ const Chat = () => {
       <div className='messages custom-scroll active wallpapers' id='chating'>
         <div className='contact-details'>
           <div className='row'>
-            <div className='col-7'>
+            <div className='col-12'>
               <ChatContact />
-            </div>
-            <div className='col'>
-              <ChatOptions />
             </div>
           </div>
         </div>
         <ChatMessages />
       </div>
-
       <MessageInput />
     </>
-  );
-};
+  )
+}
 
-export default Chat;
+export default Chat

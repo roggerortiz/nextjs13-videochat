@@ -1,10 +1,10 @@
-import { useChat } from '@/helpers/context/chatContext';
-import ChatMessageReplies from './chatMessageReplies';
-import ChatMessageSent from './chatMessageSent';
-import ChatMessageTyping from './chatMessageTyping';
+import { useChat } from '@/helpers/context/chatContext'
+import ChatMessageReplies from './chatMessageReplies'
+import ChatMessageSent from './chatMessageSent'
+import ChatMessageTyping from './chatMessageTyping'
 
 const ChatMessages = () => {
-  const { user, contact, messages } = useChat();
+  const { user, contact, messages } = useChat()
 
   return (
     <div className='contact-chat pb-0'>
@@ -34,7 +34,7 @@ const ChatMessages = () => {
         />
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default ChatMessages;
+export default ChatMessages

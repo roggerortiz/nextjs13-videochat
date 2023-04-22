@@ -1,15 +1,14 @@
-import classNames from 'classnames';
-import { useState } from 'react';
-import { CheckSquare, Square, Video } from 'react-feather';
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
-import { useVideoCall } from '@/helpers/context/videoCallContext';
+import { useState } from 'react'
+import { CheckSquare, Square, Video } from 'react-feather'
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
+import { useVideoCall } from '@/helpers/context/videoCallContext'
 
 const VideoCallVideoInputs = () => {
-  const [inputs, setInputs] = useState(false);
-  const { videoInput, videoInputs, changeVideoInput } = useVideoCall();
+  const [inputs, setInputs] = useState(false)
+  const { videoInput, videoInputs, changeVideoInput } = useVideoCall()
 
   const handleChangeVideoInput = (deviceId) => () => {
-    changeVideoInput(deviceId);
+    changeVideoInput(deviceId)
   }
 
   if (!videoInputs?.length) {
@@ -21,7 +20,7 @@ const VideoCallVideoInputs = () => {
       <div>
         <Dropdown
           isOpen={inputs}
-          toggle={() => setInputs(!inputs)}
+          toggle={() => setInputs((prevState) => !prevState)}
         >
 
           <DropdownToggle
@@ -31,27 +30,29 @@ const VideoCallVideoInputs = () => {
             <Video />
           </DropdownToggle>
 
-          <DropdownMenu end={true}>
+          <DropdownMenu end>
             {videoInputs.map((item) => {
               return (
                 <DropdownItem
                   key={item.deviceId}
                   onClick={handleChangeVideoInput(item.deviceId)}
                 >
-                  {(item.deviceId === videoInput?.deviceId) ? (
-                    <CheckSquare />
-                  ) : (
-                    <Square />
-                  )}
+                  {(item.deviceId === videoInput?.deviceId)
+                    ? (
+                      <CheckSquare />
+                      )
+                    : (
+                      <Square />
+                      )}
                   {item.label}
                 </DropdownItem>
-              );
+              )
             })}
           </DropdownMenu>
         </Dropdown>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VideoCallVideoInputs;
+export default VideoCallVideoInputs

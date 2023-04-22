@@ -11,7 +11,7 @@ const VideoCallPlayer = () => {
         className='small-image rounded overflow-hidden'
       />
     </>
-  );
-};
+  )
+}
 
-export default VideoCallPlayer;
+export default VideoCallPlayer

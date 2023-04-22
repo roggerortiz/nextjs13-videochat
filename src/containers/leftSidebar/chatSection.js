@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { Search } from 'react-feather';
-import { TabContent, TabPane } from 'reactstrap';
-import { ChatStatus } from '@/helpers/enums/chatStatus';
-import { useChat } from '@/helpers/context/chatContext';
+import { LogOut } from 'react-feather'
+import { TabContent, TabPane } from 'reactstrap'
+import { ChatStatus } from '@/helpers/enums/chatStatus'
+import { useChat } from '@/helpers/context/chatContext'
 
 const ChatSection = () => {
-  const { contact } = useChat()
-  const [searchToggle, setSearchToggle] = useState(false);
+  const { contact, signOut } = useChat()
 
   const getStatusClassName = status => {
     if (status === ChatStatus.SENDING) {
@@ -19,15 +17,15 @@ const ChatSection = () => {
   }
 
   const handleShowChat = () => {
-    document.querySelector('.sidebar-toggle').classList.add('mobile-menu');
-  };
+    document.querySelector('.sidebar-toggle').classList.add('mobile-menu')
+  }
 
   return (
     <div className='chat custom-scroll'>
       <div className='theme-title'>
         <div className='media align-items-center'>
           <div>
-            <h2 className="mt-1">
+            <h2 className='mt-1'>
               Chat
             </h2>
           </div>
@@ -35,29 +33,15 @@ const ChatSection = () => {
             <button
               className='icon-btn btn-outline-light btn-sm search contact-search'
               href='#'
-              onClick={() => setSearchToggle(true)}
+              onClick={() => signOut()}
             >
-              {' '}
-              <Search />
+              <LogOut />
             </button>
-            <form className={`form-inline search-form ${searchToggle ? 'open' : ''}`}>
-              <div className='form-group'>
-                <input
-                  className='form-control-plaintext'
-                  type='search'
-                  placeholder='Search..'
-                />
-                <div
-                  className='icon-close close-search'
-                  onClick={() => setSearchToggle(false)}
-                ></div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
       <div className='theme-tab tab-sm chat-tabs'>
-        <TabContent activeTab={'direct'}>
+        <TabContent activeTab='direct'>
           <TabPane
             tabId='direct'
             className='fade show'
@@ -72,14 +56,14 @@ const ChatSection = () => {
                   onClick={handleShowChat}
                 >
                   <div className='chat-box'>
-                    <div className="profile bg-info rounded online">
+                    <div className='profile bg-info rounded online'>
                       <span>
                         {contact.initials}
                       </span>
                     </div>
 
                     <div className='details'>
-                      <h5>{contact.shortName}</h5>
+                      <h5>{contact.name}</h5>
                       <h6>{contact.message}</h6>
                     </div>
 
@@ -97,7 +81,7 @@ const ChatSection = () => {
         </TabContent>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChatSection;
+export default ChatSection

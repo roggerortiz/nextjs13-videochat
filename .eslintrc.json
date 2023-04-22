@@ -1,6 +1,10 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "node_modules/standard/eslintrc.json"
-  ]
+    "./node_modules/standard/eslintrc.json"
+  ],
+  "rules": {
+    "multiline-ternary": "off",
+    "react-hooks/exhaustive-deps": "off"
+  }
 }

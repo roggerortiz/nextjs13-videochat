@@ -1,16 +1,16 @@
-import classNames from 'classnames';
-import { Modal, ModalBody } from 'reactstrap';
-import { useVideoCall } from '@/helpers/context/videoCallContext';
-import VideoCallPlayer from './videoCallPlayer';
-import VideoCallDetails from './videoCallDetails';
-import VideoCallActions from './videoCallActions';
+import classNames from 'classnames'
+import { Modal, ModalBody } from 'reactstrap'
+import { useVideoCall } from '@/helpers/context/videoCallContext'
+import VideoCallPlayer from './videoCallPlayer'
+import VideoCallDetails from './videoCallDetails'
+import VideoCallActions from './videoCallActions'
 
 const VideoCall = () => {
-  const { videoCall, videoMaximize, videoFullScreen, toggleVideoCall } = useVideoCall();
+  const { videoCall, videoMaximize, videoFullScreen, toggleVideoCall } = useVideoCall()
 
   return (
     <Modal
-      centered={true}
+      centered
       keyboard={false}
       backdrop='static'
       id='videoCallModal'
@@ -31,7 +31,7 @@ const VideoCall = () => {
         </div>
       </ModalBody>
     </Modal>
-  );
-};
+  )
+}
 
-export default VideoCall;
+export default VideoCall

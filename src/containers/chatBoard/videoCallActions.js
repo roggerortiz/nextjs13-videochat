@@ -1,8 +1,8 @@
-import { Mic, MicOff, Phone, Video, VideoOff } from 'react-feather';
-import { useVideoCall } from '@/helpers/context/videoCallContext';
+import { Mic, MicOff, Phone, Video, VideoOff } from 'react-feather'
+import { useVideoCall } from '@/helpers/context/videoCallContext'
 
 const VideoCallActions = () => {
-  const { muteVideo, muteAudio, toggleVideoCall, toggleMuteVideo, toggleMuteAudio } = useVideoCall();
+  const { muteVideo, muteAudio, toggleVideoCall, toggleMuteVideo, toggleMuteAudio } = useVideoCall()
 
   return (
     <div className='center-con text-center'>
@@ -38,7 +38,7 @@ const VideoCallActions = () => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default VideoCallActions;
+export default VideoCallActions

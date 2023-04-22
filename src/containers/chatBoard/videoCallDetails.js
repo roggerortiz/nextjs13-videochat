@@ -1,9 +1,9 @@
-import VideoCallUserInfo from './videoCallUserInfo';
-import VideoCallVideoInputs from './videoCallVideoInputs';
-import VideoCallAudioInputs from './videoCallAudioInputs';
-import VideoCallFullScreen from './videoCallFullScreen';
-import VideoCallTimeValues from './videoCallTimeValues';
-import VideoCallMaximize from './videoCallMaximize';
+import VideoCallUserInfo from './videoCallUserInfo'
+import VideoCallVideoInputs from './videoCallVideoInputs'
+import VideoCallAudioInputs from './videoCallAudioInputs'
+import VideoCallFullScreen from './videoCallFullScreen'
+import VideoCallTimeValues from './videoCallTimeValues'
+import VideoCallMaximize from './videoCallMaximize'
 
 const VideoCallDetails = () => {
   return (
@@ -17,7 +17,7 @@ const VideoCallDetails = () => {
         <VideoCallFullScreen />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VideoCallDetails;
+export default VideoCallDetails
