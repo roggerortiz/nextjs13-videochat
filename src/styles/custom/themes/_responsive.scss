@@ -84,6 +84,7 @@
   .modal-dialog-centered {
     .modal-content {
       max-height: 92vh;
+      overflow: hidden;
     }
   }
 
@@ -128,6 +129,24 @@
 
   .zoomcontent {
     display: block;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog-centered {
+    .modal-content {
+      max-height: 90vh;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .videocall {
+    &.call-modal {
+      .small-image {
+        display: block !important;
+      }
+    }
   }
 }
 

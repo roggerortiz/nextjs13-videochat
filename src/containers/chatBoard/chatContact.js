@@ -33,6 +33,8 @@ const ChatContact = () => {
 
       <div className='media-right'>
         <ul>
+          <li />
+          <li />
           <li>
             <Tooltip
               title='Quick Video Call'
