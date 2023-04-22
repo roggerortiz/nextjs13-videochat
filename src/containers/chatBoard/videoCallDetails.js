@@ -7,7 +7,7 @@ import VideoCallMaximize from './videoCallMaximize'
 
 const VideoCallDetails = () => {
   return (
-    <div className='media videocall-details px-3 py-2'>
+    <div className='media videocall-details justify-content-between px-3 py-2'>
       <VideoCallUserInfo />
       <div className='d-flex align-items-center'>
         <VideoCallTimeValues />

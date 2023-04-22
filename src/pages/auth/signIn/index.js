@@ -23,10 +23,10 @@ const AuthSignIn = () => {
       <div className='login-content-main'>
         <div className='login-content'>
           <form className='form2' onSubmit={handleSignIn}>
-            <div className='form-group'>
+            <div className='form-group mb-3'>
               <label
                 htmlFor='username'
-                className='col-form-label'
+                className='col-form-label fs-4'
               >
                 Username
               </label>
@@ -34,16 +34,17 @@ const AuthSignIn = () => {
                 type='text'
                 id='username'
                 name='username'
+                autoComplete='off'
                 placeholder='Username'
-                className='form-control'
+                className='form-control form-control-sm'
                 value={credential.email}
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className='form-group'>
+            <div className='form-group mb-3'>
               <label
                 htmlFor='inputPassword3'
-                className='col-form-label'
+                className='col-form-label fs-4'
               >
                 Password
               </label>
@@ -52,15 +53,16 @@ const AuthSignIn = () => {
                 type='password'
                 id='password'
                 name='password'
+                autoComplete='off'
                 placeholder='Password'
-                className='form-control'
+                className='form-control form-control-sm'
                 value={credential.password}
                 onChange={handleChange}
               />
             </div>
             <div className='form-group mb-0'>
               <div className='buttons'>
-                <button className='btn button-effect btn-primary'>
+                <button className='btn button-effect btn-primary w-100 px-3 py-2 rounded-1'>
                   Login
                 </button>
               </div>
@@ -68,62 +70,6 @@ const AuthSignIn = () => {
           </form>
         </div>
       </div>
-      {/* <div className="animation-block">
-        <div className="bg_circle">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div className="cross"></div>
-        <div className="cross1"></div>
-        <div className="cross2"></div>
-        <div className="dot"></div>
-        <div className="dot1"></div>
-        <div className="top-circle"></div>
-        <div className="center-circle"></div>
-        <div className="bottom-circle1"></div>
-        <div className="right-circle"></div>
-        <div className="right-circle1"></div>
-        <div className="quarterCircle"></div>
-        <img
-          className="cloud-logo"
-          src="../assets/images/login_signup/2.png"
-          alt="login logo"
-        />
-        <img
-          className="cloud-logo1"
-          src="../assets/images/login_signup/2.png"
-          alt="login logo"
-        />
-        <img
-          className="cloud-logo2"
-          src="../assets/images/login_signup/2.png"
-          alt="login logo"
-        />
-        <img
-          className="cloud-logo3"
-          src="../assets/images/login_signup/2.png"
-          alt="login logo"
-        />
-        <img
-          className="cloud-logo4"
-          src="../assets/images/login_signup/2.png"
-          alt="login logo"
-        />
-        <img
-          className="cloud-logo5"
-          src="../assets/images/login_signup/2.png"
-          alt="login logo"
-        />
-      </div> */}
     </div>
   )
 }
